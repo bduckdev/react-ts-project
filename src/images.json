@@ -1,0 +1,22 @@
+[
+  {
+    "source": "https://picsum.photos/200/300",
+    "title": "My image",
+    "isLiked": false
+  },
+  {
+    "source": "https://picsum.photos/200/300",
+    "title": "My other image",
+    "isLiked": true
+  },
+  {
+    "source": "https://picsum.photos/200/300",
+    "title": "Something",
+    "isLiked": false
+  },
+  {
+    "source": "https://picsum.photos/200/300",
+    "title": "Fourth image",
+    "isLiked": true
+  }
+]

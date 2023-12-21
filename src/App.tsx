@@ -2,32 +2,42 @@ import Header from './Header';
 import './App.css';
 import ImageCard, { Image } from './ImageCard';
 import Gallery from './Gallery';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import images from './images.json';
 
 function App() {
-  const [isLiked, setIsLiked] = useState(images[0].isLiked);
+  const [users, setUsers] = useState<{ name: string }[] | null>(null);
 
-  // const image: Image = {
-  //   source: 'https://picsum.photos/200/300',
-  //   title: 'My image',
-  //   isLiked: isLiked,
-  // };
+  useEffect(() => {
+    loadData().then((users) => {
+      setUsers(users);
+    });
+  }, []);
 
-  const image: Image = {
-    ...images[0],
-    isLiked: isLiked,
-  };
+  if (users === null) {
+    return <div>Loading....</div>;
+  }
 
   return (
     <div>
-      <Header text="Images" />
-
-      {/* <Gallery images={images} /> */}
-
-      <ImageCard image={image} setIsLiked={setIsLiked} />
+      <span>{users[0].name}</span>
     </div>
   );
+}
+
+async function loadData() {
+  console.log('loading data');
+  // fetch users
+  await new Promise((res) => setTimeout(res, 1000));
+
+  return [
+    {
+      name: 'Jim',
+    },
+    {
+      name: 'Bob',
+    },
+  ];
 }
 
 export default App;
